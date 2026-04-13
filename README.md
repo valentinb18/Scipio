@@ -1,9 +1,8 @@
 #SCIPIO - Sistema de Gestión de Stock de Lubricantes
 
 <p align="center">
-  <img src="Imagenes/imgIconoApp.png"alt="Logo de SICPIO"width="120"height="120"/>
+  <img src="screenshots/logoApp.png"alt="Logo de SICPIO"width="120"height="120"/>
 </p>
-
 <h1 align="center">SICPIO - Sistema de Gestión de Stock</h1>
 
 ## 📌 Descripción
