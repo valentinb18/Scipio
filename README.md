@@ -22,3 +22,13 @@
 3. Ejecutar la clase `Login.java` para iniciar la aplicación.
 
 ## 📸 Capturas de Pantalla
+![Pantalla de Login](screenshots/login.png)
+![Menú Principal](screenshots/menuPrincipal.png)
+![Gestión de Productos](screenshots/gestionProductos.png)
+![Clientes](screenshots/clientes.png)
+![Ventas](screenshots/ventas.png)
+![Modulo de Proveedores](screenshots/proveedores.png)
+![Usuarios](screenshots/usuarios.png)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Desarrollado por [valentinb18](https://github.com/valentinb18) para examen final de la materia Programacion II de la Tecnicatura Universitaria en Programacion (TUP).
