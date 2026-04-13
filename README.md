@@ -1,6 +1,6 @@
 #SCIPIO - Sistema de Gestión de Stock de Lubricantes
 
-![Logo de SCPIO](Imagenes/imgIconoApp.png)
+![Logo de SCPIO](screenshots/logoApp.png)
 
 ## 📌 Descripción
 **Scipio** es una apliación desarrollada en Java diseñada para optimizar la administración de un lubricentro. El mismo permite gestionar el inventario de productos, registrar proveedores y agilizar el proceso de ventas.
