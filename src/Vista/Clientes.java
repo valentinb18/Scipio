@@ -206,8 +206,9 @@ public class Clientes extends javax.swing.JFrame {
         }
         
         for(Cliente c : Logica.Datos.listadoClientes){
-            if(c.getNombre().equals(nomb)){
-                JOptionPane.showMessageDialog(this, "EL CLIENTE CON EL CUIT " + dni + " YA SE ENCUENTRA REGISTRADO");
+            if(c.getCuit().equals(dni)){
+                JOptionPane.showMessageDialog(this, "EL CLIENTE CON EL CUIT " + dni + " YA PERTENECE A: " + c.getNombre());
+                txtCuit.requestFocus();
                 return;
             }
         }

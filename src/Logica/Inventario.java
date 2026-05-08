@@ -2,7 +2,7 @@ package Logica;
 import Modelo.Producto;
 import java.util.ArrayList;
 
-public class Inventario extends javax.swing.JFrame{
+public class Inventario{
     
     private static ArrayList<Producto> listaDeProductos = new ArrayList<>();
     
@@ -16,7 +16,7 @@ public class Inventario extends javax.swing.JFrame{
     
     public static Producto busquedaPorID(int idBusqueda){
         for(Producto p : listaDeProductos){
-            if(p.getId().equals(idBusqueda)){
+            if(p.getId().equals(String.valueOf(idBusqueda))){
                 return p;
             }
         }

@@ -129,7 +129,7 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "USUARIO O CONTRASEÑA INCORECTOS.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }else{
-            JOptionPane.showMessageDialog(this, "LA CONTRASEÑA NO CUMPLE CON LOS REQUISITOS:\n- Una Mayúscula\n- Un Número\n- Un Carácter Especial", "Seguridad Insuficiente", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "LA CONTRASEÑA NO CUMPLE CON LOS REQUISITOS:\n- Una Mayúscula\n- Un Número\n- Un Carácter Especial", "Poca seguridad", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_txtIngresarActionPerformed
 

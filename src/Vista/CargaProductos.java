@@ -200,6 +200,8 @@ public class CargaProductos extends javax.swing.JFrame {
         try{
             String cod = txtCodigo.getText().toUpperCase();
             String nom = txtNombre.getText().toUpperCase();
+            String mar = txtMarca.getText().toUpperCase();
+            String tipo = txtTipo.getText().toUpperCase();
             int stockNuevo = Integer.parseInt(txtStock.getText());
             if(stockNuevo < 0){
                 JOptionPane.showMessageDialog(this, "DEBE INGRESAR UN STOCK MAYOR A 0");
@@ -209,8 +211,8 @@ public class CargaProductos extends javax.swing.JFrame {
             if(existenciaProducto(cod)){
                 for(Producto p : Logica.Datos.listadoLubricantes){
                     if(p.getId().equals(cod)){
-                        if(p.getNombre().equals(nom)){
-                            int respuesta = JOptionPane.showConfirmDialog(this, "PRODUCTO EXISTENTE", "¿DESEA SUMARLO AL STOCK?", JOptionPane.YES_NO_OPTION);
+                        if(p.getNombre().equals(nom) && p.getMarca().equals(mar) && p.getTipo().equals(tipo)){
+                            int respuesta = JOptionPane.showConfirmDialog(this, "PRODUCTO EXISTENTE. ¿DESEA SUMARLO AL STOCK?", "ATENCIÓN", JOptionPane.YES_NO_OPTION);
                             if(respuesta == JOptionPane.YES_OPTION){
                             p.setStock(p.getStock() + stockNuevo);
                             JOptionPane.showMessageDialog(this, "STOCK ACTUALIZADO");
@@ -218,7 +220,7 @@ public class CargaProductos extends javax.swing.JFrame {
                             }
                             return;
                         }else{
-                        JOptionPane.showMessageDialog(this, "ERROR: EL CODIGO YA PERTENECE A OTRO PRODUCTO CON DISTINTO NOMBRE");
+                        JOptionPane.showMessageDialog(this, "EL CODIGO YA PERTENECE A OTRO PRODUCTO CON DISTINTO NOMBRE", "ERROR:", JOptionPane.ERROR_MESSAGE);
                         limpiarCamposCargaProductos();
                         txtCodigo.requestFocus();  
                         return;
@@ -226,8 +228,6 @@ public class CargaProductos extends javax.swing.JFrame {
                     }
                 }
             }
-            String mar = txtMarca.getText().toUpperCase();
-            String tipo = txtTipo.getText().toUpperCase();
             Producto nuevoAceite = new Producto(cod, nom, mar, tipo, stockNuevo);
             Logica.Datos.listadoLubricantes.add(nuevoAceite);
             JOptionPane.showMessageDialog(this, "REGISTRADO CORRECTAMENTE");

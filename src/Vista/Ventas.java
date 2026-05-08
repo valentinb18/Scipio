@@ -173,13 +173,19 @@ public class Ventas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
-        String busquedaAceite = txtBusquedaAceite.getText().toUpperCase();
+        String busquedaAceite = txtBusquedaAceite.getText().toUpperCase().trim();
         boolean encontrado = false;
         
+        if(busquedaAceite.isEmpty()){
+            JOptionPane.showMessageDialog(this, "INGRESE DATO PARA BUSCAR");
+            return;
+        }
+        
         for(Producto p : Logica.Datos.listadoLubricantes){
-            if(p.getId().equals(busquedaAceite)){
+            if(p.getId().equals(busquedaAceite) || p.getNombre().toUpperCase().contains(busquedaAceite)){
                 lblNombre.setText(p.getNombre());
                 lblStockDisponible.setText(String.valueOf(p.getStock()));
+                txtBusquedaAceite.setText(p.getNombre());
                 encontrado = true;
                 break;
             }
@@ -191,18 +197,24 @@ public class Ventas extends javax.swing.JFrame {
 
     private void btnRealizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarVentaActionPerformed
         try{
-            int cantidad = Integer.parseInt(txtCantidad.getText());
             
-            String idEncontrado = txtBusquedaAceite.getText().toUpperCase();
+            if(txtCantidad.getText().isEmpty() || txtBusquedaAceite.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "COMPLETE EL PRODUCTO Y CANTIDAD");
+                return;
+            }
+            
+            int cantidad = Integer.parseInt(txtCantidad.getText());
+            String busquedaAceite = txtBusquedaAceite.getText().toUpperCase();
             String nombreCliente = txtCliente.getText().trim().toUpperCase();
             
             boolean clienteCargado = false;
-            if(nombreCliente.equals("CF") || nombreCliente.isEmpty()){
+            if(nombreCliente.equals("CF") || nombreCliente.isEmpty() || nombreCliente.equals("CONSUMIDOR FINAL")){
                 nombreCliente = "CONSUMIDOR FINAL";
                 clienteCargado = true;    
             }else{
                 for(Cliente c : Logica.Datos.listadoClientes){
-                    if(c.getNombre().toUpperCase().equals(nombreCliente)){
+                    if(c.getNombre().equalsIgnoreCase(nombreCliente)){
+                        nombreCliente = c.getNombre().toUpperCase();
                         clienteCargado = true;
                         break;
                     }
@@ -210,11 +222,13 @@ public class Ventas extends javax.swing.JFrame {
             }
             if(!clienteCargado){
                 JOptionPane.showMessageDialog(this, "EL CLIENTE NO EXISTE. REGISTRELO O USE CONSUMIDOR FINAL");
+                txtCliente.requestFocus();
                 return;
             }
-            
+            boolean productoEncontrado = false;
             for(Producto p : Logica.Datos.listadoLubricantes){
-                if(p.getId().equals(idEncontrado)){
+                if(p.getId().equals(busquedaAceite) || p.getNombre().equalsIgnoreCase(busquedaAceite)){
+                    productoEncontrado = true;
                     if(cantidad > p.getStock()){
                         JOptionPane.showMessageDialog(this, "NO HAY STOCK SUFICIENTE. CANTIDAD DISPONIBLE: " + p.getStock());
                         return;
@@ -321,8 +335,10 @@ public class Ventas extends javax.swing.JFrame {
     }
     
     private void limpiarCamposVenta(){
+        txtCliente.setText("");
         txtBusquedaAceite.setText("");
         lblNombre.setText("");
+        lblStockDisponible.setText("");
         txtCantidad.setText("");
         txtBusquedaAceite.requestFocus();
     }

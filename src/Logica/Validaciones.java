@@ -16,7 +16,7 @@ public class Validaciones {
                 conMayuscula = true;
             }else if(Character.isDigit(c)){
                 conNumero = true;
-            }else if(especial.indexOf(c) != 1){
+            }else if(especial.indexOf(c) != -1){
                 caracterEspecial = true;
             }
         }
